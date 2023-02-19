@@ -1,22 +1,42 @@
 let container = document.querySelector('#grid-container')
-let gridSize = 3;
+let gridSize = 16;
 let bodyRef = document.querySelector('body')
-const height = 360, width = 360;
+const height = 500, width = 500;
 const pixelHeight = height/gridSize, pixelWidth = width/gridSize;
 let pixel = document.createElement('div')
-pixel.setAttribute('style',`width:${pixelWidth}px;height:${pixelHeight}px;background-color: blue`)
-// bodyRef.appendChild(pixel)
+let isMouseDown = false;
+
+document.addEventListener('mousedown',()=>{
+    isMouseDown = true;
+})
+
+document.addEventListener('mouseup',()=>{
+    isMouseDown = false;
+})
+
+pixel.setAttribute('style',`width:${pixelWidth}px;height:${pixelHeight}px`)
 
 container.setAttribute('style',`width: ${width}px; height: ${height}px`)
 
-console.log('starting loop',container)
 for(let row= 1 ; row<=gridSize; row++){
     let newRow = document.createElement('div')
     newRow.setAttribute('style','display:flex')
     for(let col= 1 ; col<=gridSize; col++){
-        newCol = document.createElement('div')
-        newCol.setAttribute('style',`width: ${pixelWidth}px; height: ${pixelHeight}px; border: 1px solid black`)
-        // newCol.textContent = 'x'
+        let newCol = document.createElement('div')
+        newCol.classList.add('pixel')
+        newCol.setAttribute('style',`width: ${pixelWidth}px; height: ${pixelHeight}px`);
+
+        // Interaction mouse pixel
+        newCol.addEventListener('click',()=>{
+            newCol.style.backgroundColor = 'black';
+        })
+        newCol.addEventListener('mouseenter',()=>{
+            if (isMouseDown){
+                newCol.style.backgroundColor = 'black'
+            }
+        })
+
+        
         newRow.appendChild(newCol)
     }
      container.appendChild(newRow)
