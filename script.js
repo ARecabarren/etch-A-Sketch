@@ -38,16 +38,21 @@ function makeGrid() {
 
         // Interaction mouse pixel
         newCol.addEventListener('click',()=>{
-            if (eraserOff) {
+            if (eraserOff && rainbowOFF) {
                 newCol.style.backgroundColor = selectedColor;
-            }else{
+            }else if(rainbowOFF || !eraserOff){
                 newCol.style.backgroundColor = 'white'
+            }else{
+                newCol.style.backgroundColor = generateRandomColor()
             }
             
         })
         newCol.addEventListener('mouseenter',()=>{
-            if (isMouseDown && eraserOff){
+            if (isMouseDown && eraserOff && rainbowOFF){
                 newCol.style.backgroundColor = selectedColor
+            }
+            if(isMouseDown && !rainbowOFF){
+                newCol.style.backgroundColor = generateRandomColor()
             }
         })
 
@@ -97,6 +102,27 @@ let selectedColor = "#000000";
 const colorPicker = document.getElementById('color-picker');
 colorPicker.addEventListener('change', (event) => {
     selectedColor = event.target.value;
+});
+
+// Rainbow mode
+let rainbowOFF = true
+function generateRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+const randomColorBtn = document.getElementById('random-color-btn');
+randomColorBtn.addEventListener('click', () => {
+    if(rainbowOFF){
+        rainbowOFF = false
+    }else{
+        rainbowOFF = true
+    }
+    // selectedColor = generateRandomColor();
 });
 
 //Resolution buttons
