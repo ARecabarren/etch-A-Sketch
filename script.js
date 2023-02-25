@@ -1,10 +1,13 @@
 let container = document.querySelector('#grid-container')
-let gridSize = 16;
+let gridSize = 50;
 let bodyRef = document.querySelector('body')
 const height = 500, width = 500;
 const pixelHeight = height/gridSize, pixelWidth = width/gridSize;
 let pixel = document.createElement('div')
 let isMouseDown = false;
+
+
+// WHITEBOARD GENERATION
 
 document.addEventListener('mousedown',()=>{
     isMouseDown = true;
@@ -41,3 +44,22 @@ for(let row= 1 ; row<=gridSize; row++){
     }
      container.appendChild(newRow)
 }
+
+// BUTTONS TOOLS
+//Clean whiteboard
+let deleteAll = document.querySelector('#deleteAll')
+deleteAll.addEventListener('click',cleanWhiteboard)
+
+function cleanWhiteboard(){
+    let pixels = document.querySelectorAll('.pixel');
+    for(let pixel of pixels){
+        pixel.style.backgroundColor = 'white'
+    }
+}
+
+//Resolution buttons
+
+let thirty = document.querySelector('#thirty');
+thirty.addEventListener('click',()=>{
+    gridSize = 30
+})

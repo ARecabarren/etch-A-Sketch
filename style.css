@@ -1,16 +1,37 @@
-/* body{
+/* Top buttons section */
+header{
     display: flex;
     justify-content: center;
-    height: 700px;;
-} */
+    /* margin-bottom: 1%; */
+}
 
-/* .grid-container{
-    border-color: aqua;
-    width: 550px;
-    height: 550px;
-} */
+header > button {
+    margin: 1% 2% 3% 2%;
+}
 
-/* .column{
-    display: inline;
-    border-color: red;
-} */
+/* Whiteboard section */
+
+#whiteboard{
+    display: flex;
+    justify-content: center;
+}
+
+#grid-container{
+    border: 1px solid red;
+}
+div.pixel:hover{
+    background-color: rgb(228, 224, 224);
+}
+
+/* Tools buttons section */
+#buttonsTools{
+    border: 1px solid green;
+    width: 500px;
+    justify-self: center;
+    margin: auto;
+}
+
+#buttonsTools > div{
+    display: flex;
+    justify-content: center;
+}
