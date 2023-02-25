@@ -39,7 +39,7 @@ function makeGrid() {
         // Interaction mouse pixel
         newCol.addEventListener('click',()=>{
             if (eraserOff) {
-                newCol.style.backgroundColor = 'black';
+                newCol.style.backgroundColor = selectedColor;
             }else{
                 newCol.style.backgroundColor = 'white'
             }
@@ -47,7 +47,7 @@ function makeGrid() {
         })
         newCol.addEventListener('mouseenter',()=>{
             if (isMouseDown && eraserOff){
-                newCol.style.backgroundColor = 'black'
+                newCol.style.backgroundColor = selectedColor
             }
         })
 
@@ -91,7 +91,13 @@ eraserButton.addEventListener('click',()=>{
     }
 })
 
+//Pick a color
 
+let selectedColor = "#000000";
+const colorPicker = document.getElementById('color-picker');
+colorPicker.addEventListener('change', (event) => {
+    selectedColor = event.target.value;
+});
 
 //Resolution buttons
 function remakeGrid(){
