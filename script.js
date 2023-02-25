@@ -1,7 +1,7 @@
 let container = document.querySelector('#grid-container')
-let gridSize = 16;
+let gridSize = 50;
 let bodyRef = document.querySelector('body')
-const height = 500, width = 500;
+const height = 450, width = 450;
 let pixelHeight = height/gridSize, pixelWidth = width/gridSize;
 let pixel = document.createElement('div')
 let isMouseDown = false;
@@ -98,7 +98,7 @@ eraserButton.addEventListener('click',()=>{
 
 //Pick a color
 
-let selectedColor = "#000000";
+let selectedColor = "#179795";
 const colorPicker = document.getElementById('color-picker');
 colorPicker.addEventListener('change', (event) => {
     selectedColor = event.target.value;
