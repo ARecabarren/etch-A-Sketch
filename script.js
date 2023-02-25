@@ -1,11 +1,15 @@
 let container = document.querySelector('#grid-container')
-let gridSize = 50;
+let gridSize = 16;
 let bodyRef = document.querySelector('body')
 const height = 500, width = 500;
-const pixelHeight = height/gridSize, pixelWidth = width/gridSize;
+let pixelHeight = height/gridSize, pixelWidth = width/gridSize;
 let pixel = document.createElement('div')
 let isMouseDown = false;
 
+function setPixelSize(){
+    pixelHeight = height/gridSize;
+    pixelWidth = width/gridSize
+}
 
 // WHITEBOARD GENERATION
 
@@ -21,8 +25,10 @@ pixel.setAttribute('style',`width:${pixelWidth}px;height:${pixelHeight}px`)
 
 container.setAttribute('style',`width: ${width}px; height: ${height}px`)
 
-for(let row= 1 ; row<=gridSize; row++){
+function makeGrid() {
+    for(let row= 1 ; row<=gridSize; row++){
     let newRow = document.createElement('div')
+    newRow.classList.add('row')
     newRow.setAttribute('style','display:flex')
     for(let col= 1 ; col<=gridSize; col++){
         let newCol = document.createElement('div')
@@ -44,6 +50,9 @@ for(let row= 1 ; row<=gridSize; row++){
     }
      container.appendChild(newRow)
 }
+}
+
+makeGrid()
 
 // BUTTONS TOOLS
 //Clean whiteboard
@@ -57,9 +66,24 @@ function cleanWhiteboard(){
     }
 }
 
+
 //Resolution buttons
+function remakeGrid(){
+    let rows = document.querySelectorAll('.row');
+    for (const row of rows) {
+        container.removeChild(row)
+    }
+    makeGrid()
+}
+
 
 let thirty = document.querySelector('#thirty');
+
 thirty.addEventListener('click',()=>{
-    gridSize = 30
+
+    console.log('setoy en el boton de 30x30')
+    gridSize = 30;
+    setPixelSize()
+    remakeGrid()
 })
+

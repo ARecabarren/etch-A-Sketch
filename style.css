@@ -20,7 +20,7 @@ header > button {
     border: 1px solid red;
 }
 div.pixel:hover{
-    background-color: rgb(228, 224, 224);
+    background-color: rgb(201, 196, 196);
 }
 
 /* Tools buttons section */
