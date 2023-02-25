@@ -5,6 +5,7 @@ const height = 500, width = 500;
 let pixelHeight = height/gridSize, pixelWidth = width/gridSize;
 let pixel = document.createElement('div')
 let isMouseDown = false;
+let allButtons = document.querySelectorAll('button')
 
 function setPixelSize(){
     pixelHeight = height/gridSize;
@@ -37,10 +38,15 @@ function makeGrid() {
 
         // Interaction mouse pixel
         newCol.addEventListener('click',()=>{
-            newCol.style.backgroundColor = 'black';
+            if (eraserOff) {
+                newCol.style.backgroundColor = 'black';
+            }else{
+                newCol.style.backgroundColor = 'white'
+            }
+            
         })
         newCol.addEventListener('mouseenter',()=>{
-            if (isMouseDown){
+            if (isMouseDown && eraserOff){
                 newCol.style.backgroundColor = 'black'
             }
         })
@@ -65,6 +71,26 @@ function cleanWhiteboard(){
         pixel.style.backgroundColor = 'white'
     }
 }
+
+//Clean pixel
+let eraserOff = true
+const eraserButton = document.querySelector('#eraser')
+eraserButton.addEventListener('click',()=>{
+    if(eraserOff){
+        eraserOff = false
+        for (const button of allButtons) {
+            button.disabled = true
+        }
+        eraserButton.disabled = false
+    }else {
+        for (const button of allButtons) {
+            button.disabled = false
+        }
+        eraserOff = true
+        
+    }
+})
+
 
 
 //Resolution buttons
