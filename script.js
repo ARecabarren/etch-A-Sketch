@@ -76,14 +76,27 @@ function remakeGrid(){
     makeGrid()
 }
 
+//16x16
+let sixTeen = document.querySelector('#sixTeen');
+sixTeen.addEventListener('click',()=>{
+    gridSize = 16;
+    setPixelSize()
+    remakeGrid()
+})
 
+
+// 30x30
 let thirty = document.querySelector('#thirty');
-
 thirty.addEventListener('click',()=>{
-
-    console.log('setoy en el boton de 30x30')
     gridSize = 30;
     setPixelSize()
     remakeGrid()
 })
 
+//50x50
+let fifty = document.querySelector('#fifty');
+fifty.addEventListener('click',()=>{
+    gridSize = 50;
+    setPixelSize()
+    remakeGrid()
+})
