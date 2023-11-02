@@ -2,6 +2,9 @@
 
 This repository contains an interactive Etch-A-Sketch simulation built using JavaScript, CSS and HTML.
 
+## Try it
+[Playground](https://arecabarren.github.io/etch-A-Sketch/)
+
 ## Introduction
 
 The Etch-A-Sketch project is a fun exercise to demonstrate and improve DOM manipulation skills. The final output is a versatile web-based game, a blend of a sketchpad and an Etch-A-Sketch toy. Users can draw pixelated images by moving their mouse over a grid, creating a trail like a pen would do. Accessibility, making the most of HTML, CSS and JavaScript, and frequent lookups for the best methods and practices are integral to this project. 
